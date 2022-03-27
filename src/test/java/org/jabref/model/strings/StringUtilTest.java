@@ -148,7 +148,18 @@ class StringUtilTest {
 
     @Test
     void testGetPart() {
-        // Should be added
+        // 1
+        assertEquals("la",StringUtil.getPart("ola",0,false))
+        // 2
+        assertEquals("",StringUtil.getPart("ola",1,false))
+        // 3
+        assertEquals("st ",StringUtil.getPart("{test }",2,true))
+        // 4
+        assertEquals("",StringUtil.getPart("Ol{a Mundo}",-2,true))
+        // 6
+        assertEquals("Ola",StringUtil.getPart(" Ola}",0,false))
+        // 7
+        assertEquals("ol",StringUtil.getPart("Hol}a Vibranium",0,false))
     }
 
     @Test
@@ -305,7 +316,7 @@ class StringUtilTest {
 
     @Test
     void replaceSpecialCharactersWithNonNormalizedUnicode() {
-        assertEquals("Modele", StringUtil.replaceSpecialCharacters("Modèle"));
+        assertEquals("Modele", StringUtil.replaceSpecialCharacters("Modèle"));
     }
 
     static Stream<Arguments> testRepeatSpacesData() {
